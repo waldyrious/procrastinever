@@ -10,6 +10,19 @@ var procrastinever = {
     document.getElementById("context-procrastinever").hidden = gContextMenu.onImage;
   };*/
 
+createTable: function(username) {	
+	alert("CREATE TABLE IF NOT EXISTS"+username+"(web_app_name VARCHAR(50), blocked BOOLEAN ,PRIMARY KEY( web_app_name))");			
+	       var file = Components.classes["@mozilla.org/file/directory_service;1"]  
+			                      .getService(Components.interfaces.nsIProperties)  
+			                      .get("ProfD", Components.interfaces.nsIFile);  
+			file.append("procrastinever.sqlite");  
+			 var storageService = Components.classes["@mozilla.org/storage/service;1"]  
+			                         .getService(Components.interfaces.mozIStorageService);  
+			 var mDBConn = storageService.openDatabase(file);
+			 mDBConn.executeSimpleSQL("CREATE TABLE IF NOT EXISTS "+username+" (web_app_name VARCHAR(50), blocked BOOLEAN ,PRIMARY KEY( web_app_name))");
+ },
+
+
   getUsername: function() {
     do{
       var username = prompt("Please insert your Wakoopa username:");
@@ -23,6 +36,7 @@ var procrastinever = {
         if(x.status==200){
           var usernamePref = "extensions.procrastinever.wakoopa-username";
           Application.prefs.setValue(usernamePref, username);
+          procrastinever.createTable(username);
         }
         else {
           alert("Username '"+username+"' not found on the Wakoopa servers");
@@ -37,6 +51,7 @@ var procrastinever = {
     // If we don't have the user's Wakoopa username, ask for it
     if(!Application.prefs.getValue(usernamePref, false)) {
       procrastinever.getUsername();
+  //    var username = Application.prefs.getValue(usernamePref,false);
     }
     // Otherwise, get the data
     else{
