@@ -2,9 +2,8 @@
 <?xml-stylesheet href="chrome://procrastinever/skin/overlay.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://procrastinever/locale/overlay.dtd">
 <overlay id="procrastinever-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script src="overlay.js" type="application/x-javascript"/>
-  <script src="ff-overlay.js" type="application/x-javascript"/>
-  <script src="install-toolbar-button.js" type="application/x-javascript"/>
+  <script src="ff-overlay.js"/>
+  <script src="install-toolbar-button.js"/>
 
   <stringbundleset id="stringbundleset">
     <stringbundle id="procrastinever-strings" src="chrome://procrastinever/locale/overlay.properties"/>
