@@ -19,10 +19,9 @@
     <popupset>
       <menupopup id="right-click-menu" onpopupshowing="">
         <menuitem label="&procrastineverContextMenuActivate.label;" onclick="procrastinever.onToolbarButtonCommand()"/>
-        <menuitem label="&procrastineverContextMenuConfigure.label;" onclick="gBrowser.selectedTab = gBrowser.addTab('http://google.com');"/>
+        <menuitem label="&procrastineverContextMenuConfigure.label;" onclick="gBrowser.selectedTab = gBrowser.addTab('chrome://procrastinever/content/database-management.xul');"/>
       </menupopup>
     </popupset>
   </window>
 
 </overlay>
-<!--oncontextmenu="gBrowser.addTab('chrome://procrastinever/test.html');"-->

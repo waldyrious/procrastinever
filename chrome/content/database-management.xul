@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://procrastinever/skin/database.css" type="text/css"?>
+<window id="database-management" title="Procrastinever database management"
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<vbox>
+  <button id="yes" label="Yes"/>
+  <button id="no" label="No"/>
+  <button id="maybe" label="Maybe"/>
+</vbox>
+</window>
