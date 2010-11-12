@@ -1,0 +1,6 @@
+content   procrastinever                 chrome/content/
+skin      procrastinever   classic/1.0   chrome/skin/
+locale    procrastinever   en-US         chrome/locale/en-US/
+
+
+overlay   chrome://browser/content/browser.xul   chrome://procrastinever/content/ff-overlay.xul
