@@ -12,7 +12,17 @@
   <toolbarpalette id="BrowserToolbarPalette">
   <toolbarbutton id="procrastinever-toolbar-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
     label="&procrastineverToolbarButton.label;" tooltiptext="&procrastineverToolbarButton.tooltip;"
-    oncommand="procrastinever.onToolbarButtonCommand()"/>
+    oncommand="procrastinever.onToolbarButtonCommand()" context="right-click-menu" />
   </toolbarpalette>
 
+  <window id="main-window">
+    <popupset>
+      <menupopup id="right-click-menu" onpopupshowing="">
+        <menuitem label="&procrastineverContextMenuActivate.label;" onclick="procrastinever.onToolbarButtonCommand()"/>
+        <menuitem label="&procrastineverContextMenuConfigure.label;" onclick="gBrowser.selectedTab = gBrowser.addTab('http://google.com');"/>
+      </menupopup>
+    </popupset>
+  </window>
+
 </overlay>
+<!--oncontextmenu="gBrowser.addTab('chrome://procrastinever/test.html');"-->
