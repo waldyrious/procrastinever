@@ -1,8 +1,8 @@
 <!ENTITY procrastinever.label "Your localized menuitem">
 <!ENTITY procrastineverContext.label "Your Menuitem">
-<!ENTITY procrastineverContext.accesskey "Y">
-<!ENTITY procrastineverToolbarButton.label "Your Toolbar Button">
-<!ENTITY procrastineverToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY procrastineverContext.accesskey "P">
+<!ENTITY procrastineverToolbarButton.label "Procrastinever">
+<!ENTITY procrastineverToolbarButton.tooltip "Activate productivity mode!">
 <!ENTITY procrastineverSidebar.label "Your Sidebar">
 <!ENTITY procrastineverToolbar.name  "example">
 <!ENTITY procrastineverToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &procrastineverToolbar.name;">

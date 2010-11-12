@@ -4,3 +4,4 @@ locale    procrastinever   en-US         chrome/locale/en-US/
 
 
 overlay   chrome://browser/content/browser.xul   chrome://procrastinever/content/ff-overlay.xul
+overlay   chrome://global/content/customizeToolbar.xul   chrome://procrastinever/content/ff-overlay.xul

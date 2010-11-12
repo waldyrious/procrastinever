@@ -4,5 +4,5 @@
 <!ENTITY checkboolpref.accesskey "B">
 <!ENTITY intpref.label "An Integer Preference">
 <!ENTITY intpref.accesskey "I">
-<!ENTITY stringpref.label "A String Preference">
-<!ENTITY stringpref.accesskey "S">
+<!ENTITY wakoopaUsername.label "Your Wakoopa username">
+<!ENTITY wakoopaUsername.accesskey "W">
