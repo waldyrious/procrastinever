@@ -1,3 +1,4 @@
+var usernamePref = "extensions.procrastinever.wakoopa-username";
 var file = Components.classes["@mozilla.org/file/directory_service;1"]  
                      .getService(Components.interfaces.nsIProperties)  
                      .get("ProfD", Components.interfaces.nsIFile);  
@@ -9,7 +10,7 @@ var mDBConn = storageService.openDatabase(file);
 function wakoopaApi(data) {
 
   //The user name -> the table name
-  var user = Application.prefs.getValue("extensions.procrastinever.wakoopa-username", false);
+  var user = Application.prefs.getValue(usernamePref, false);
 
   //For all entries
   for (var i = 0; i < data.length; i++) {
@@ -21,22 +22,11 @@ function wakoopaApi(data) {
 };
 
 var procrastinever = {
-  /*
-  onFirefoxLoad: function(event) {
-    document.getElementById("contentAreaContextMenu")
-            .addEventListener("popupshowing", function (e){ procrastinever.showFirefoxContextMenu(e); }, false);
-  };
-
-  showFirefoxContextMenu: function(event) {
-    // show or hide the menuitem based on what the context menu is on
-    document.getElementById("context-procrastinever").hidden = gContextMenu.onImage;
-  };
-  */
 
   readDatabase: function(){
 
     //The user name -> the table name
-    var user = Application.prefs.getValue("extensions.procrastinever.wakoopa-username", false);
+    var user = Application.prefs.getValue(usernamePref, false);
 
     var statement = mDBConn.createStatement("SELECT * FROM " + user);
 
@@ -59,12 +49,15 @@ var procrastinever = {
   },
 
   start: function(){
-    var interval = self.setInterval("procrastinever.clock()",8000);
-    procrastinever.leitura();
+    //var interval = self.setInterval("procrastinever.clock()",8000);
+    //procrastinever.readDatabase();
+
+    //create new instance of the 
+    new httpObserver();
   },
 
   clock: function() {
-    var user = Application.prefs.getValue("extensions.procrastinever.wakoopa-username", false);
+    var user = Application.prefs.getValue(usernamePref, false);
     x=new(window.ActiveXObject||XMLHttpRequest)('Microsoft.XMLHTTP');
     x.open('GET', "http://api.wakoopa.com/"+user+"/most_used.json", true);
     x.onreadystatechange=function() {
@@ -92,7 +85,6 @@ var procrastinever = {
     x.onreadystatechange=function() {
       if (x.readyState==4){
         if(x.status==200){
-          var usernamePref = "extensions.procrastinever.wakoopa-username";
           Application.prefs.setValue(usernamePref, username);
           procrastinever.createTable(username);
         }
@@ -104,20 +96,44 @@ var procrastinever = {
     x.send();
   },
 
-
   onToolbarButtonCommand: function(event) {
-    var usernamePref = "extensions.procrastinever.wakoopa-username";
     // If we don't have the user's Wakoopa username, ask for it
     if(!Application.prefs.getValue(usernamePref, false)) {
       procrastinever.getUsername();    }
-    // Otherwise, get the data
+    // Otherwise, do stuff
     else{
       alert("we're working on it :)");
     }
-    //start timer
-    procrastinever.start();
-
   }
 };
 
-//window.addEventListener("load", procrastinever.onFirefoxLoad, false);
+function httpObserver()
+{
+  this.register();
+}
+
+httpObserver.prototype = {
+  observe: function(subject, topic, data) {
+    if ("http-on-modify-request" == topic) {
+      var url;
+
+      subject.QueryInterface(Ci.nsIHttpChannel);
+      url = subject.URI.host;
+
+      var RE_URL_TO_CANCEL = /facebook/;
+      if (RE_URL_TO_CANCEL.test(url)) {
+        subject.cancel(Components.results.NS_BINDING_SUCCEEDED);
+        alert("you attempted to visit "+url+". Bad human! no cookie for you. (No website, either. GET BACK TO WORK!)");
+        gBrowser.removeCurrentTab();
+      }
+    }
+  },
+  register: function() {
+    var observerService = Components.classes["@mozilla.org/observer-service;1"]
+                          .getService(Components.interfaces.nsIObserverService);
+    observerService.addObserver(this, "http-on-modify-request", false);
+  }
+}
+
+window.addEventListener("load", procrastinever.start, false);
+
