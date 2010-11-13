@@ -20,7 +20,9 @@ statement.executeAsync({
       var blocked = row.getResultByName("blocked");
       var checkBox = document.createElement("checkbox");
       checkBox.setAttribute("label",appName);
-//      checkBox.checked = blocked;
+      // we can set directly checkBox.checked, but only after we insert the checkbox into the DOM
+      // otherwise the XBL isn't initiated and the property must be set as above, with setAttribute;
+      checkBox.setAttribute("checked",blocked);
       checkBox.setAttribute("oncommand","saveOption(this)");
       appList.appendChild(checkBox);
     }
@@ -35,6 +37,5 @@ statement.executeAsync({
 var saveOption = function(checkBox) {
   var blocked = checkBox.checked;
   var appName = checkBox.label;
-  alert(appName+"="+blocked);
   // TODO: save to database
 }
