@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://procrastinever/skin/database.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
 <window id="database-management" title="Procrastinever database management"
 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-<vbox>
-  <button id="yes" label="Yes"/>
-  <button id="no" label="No"/>
-  <button id="maybe" label="Maybe"/>
-</vbox>
+<groupbox flex="1">
+  <caption label="Procrastinever database management" />
+  <vbox flex="1">
+    <checkbox label="Facebook" />
+    <checkbox label="Youtube" oncommand="" />
+    <checkbox label="Google" oncommand="" />
+    <checkbox label="Wikipedia" oncommand="" />
+    <checkbox label="Gmail" oncommand="" />
+    <checkbox label="StackOverflow" oncommand="" />
+  </vbox>
+</groupbox>
+
+<!--
+  <groupbox>
+    <caption label="Procrastinever database management" />
+    <listbox>
+      <listcols>
+        <listcol flex="0" />
+        <splitter class="tree-splitter" />
+        <listcol flex="1" />
+      </listcols>
+      <listhead>
+	<listheader label="Blocked" />
+	<listheader label="Site name" />
+      </listhead>
+      <listitem>
+        <checkbox label="test" />
+        <label value="Facebook" />
+      </listitem>
+    </listbox>
+  </groupbox>
+-->
+
 </window>
