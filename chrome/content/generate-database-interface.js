@@ -21,7 +21,7 @@ statement.executeAsync({
       var checkBox = document.createElement("checkbox");
       checkBox.setAttribute("label",appName);
 //      checkBox.checked = blocked;
-      checkBox.setAttribute("oncommand","alert('test')");//"saveOption(this)");
+      checkBox.setAttribute("oncommand","saveOption(this)");
       appList.appendChild(checkBox);
     }
   },
@@ -33,7 +33,6 @@ statement.executeAsync({
 });
 
 var saveOption = function(checkBox) {
-  alert("TEST")
   var blocked = checkBox.checked;
   var appName = checkBox.label;
   alert(appName+"="+blocked);
