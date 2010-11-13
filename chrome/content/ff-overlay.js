@@ -7,6 +7,8 @@ var storageService = Components.classes["@mozilla.org/storage/service;1"]
                                .getService(Components.interfaces.mozIStorageService);  
 var mDBConn = storageService.openDatabase(file);
 
+// TODO: call the api specifying a custom callback,
+// so we can give this function a more intuitive name
 function wakoopaApi(data) {
 
   //The user name -> the table name
@@ -23,31 +25,8 @@ function wakoopaApi(data) {
 
 var procrastinever = {
 
-  readDatabase: function(){
-
-    //The user name -> the table name
-    var user = Application.prefs.getValue(usernamePref, false);
-
-    var statement = mDBConn.createStatement("SELECT * FROM " + user);
-
-    statement.executeAsync({
-      handleResult: function(aResultSet) {
-        for (var row = aResultSet.getNextRow();  row; row = aResultSet.getNextRow()) {
-          var name = row.getResultByName("web_app_name");
-          var used = row.getResultByName("blocked");
-        }
-      },
-      handleError: function(aError) {alert("Error: " + aError.message);},
-      handleCompletion: function(aReason) {
-      if (aReason != Components.interfaces.mozIStorageStatementCallback.REASON_FINISHED)
-        alert("Abort");
-      }
-    });
-  },
-
   start: function(){
     var interval = self.setInterval("procrastinever.clock()",8000);
-    procrastinever.readDatabase();
 
     //create new instance of the 
     new httpObserver();
