@@ -43,19 +43,19 @@ leitura: function(){
 
   var statement = mDBConn.createStatement("SELECT * FROM pi106");  
 
-  statement.executeAsync({  
-  handleResult: function(aResultSet) {  
-    for (let row = aResultSet.getNextRow();  row; row = aResultSet.getNextRow()) {   
- 			let value = row.getResultByName("column_name");      }  
-  },    
-  handleError: function(aError) {  
-    print("Error: " + aError.message);  
-  },  
-  handleCompletion: function(aReason) {  
-    if (aReason != Components.interfaces.mozIStorageStatementCallback.REASON_FINISHED)  
-      print("Query canceled or aborted!");  
-  }  
-	});
+//  statement.executeAsync({  
+//  handleResult: function(aResultSet) {  
+//    for (let row = aResultSet.getNextRow();  row; row = aResultSet.getNextRow()) {   
+// 			let value = row.getResultByName("column_name");      }  
+//  },    
+//  handleError: function(aError) {  
+//    print("Error: " + aError.message);  
+//  },  
+//  handleCompletion: function(aReason) {  
+//    if (aReason != Components.interfaces.mozIStorageStatementCallback.REASON_FINISHED)  
+///      print("Query canceled or aborted!");  
+//  }  
+//	});
 
 
 },
