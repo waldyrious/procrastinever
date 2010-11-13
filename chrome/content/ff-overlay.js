@@ -30,6 +30,20 @@ var procrastinever = {
 
     var statement = mDBConn.createStatement("SELECT * FROM " + user);
 
+	statement.executeAsync({
+	  handleResult: function(aResultSet) {
+		 for (var row = aResultSet.getNextRow();  row; row = aResultSet.getNextRow()) {
+				var name = row.getResultByName("web_app_name");
+				var used = row.getResultByName("blocked");
+	        	}	
+	  },
+	  handleError: function(aError) {alert("Error: " + aError.message);},
+	  handleCompletion: function(aReason) {
+	     if (aReason != Components.interfaces.mozIStorageStatementCallback.REASON_FINISHED)
+	      alert("Abort");
+	   }
+	});
+
     /*
     statement.executeAsync({
       handleResult: function(aResultSet) {
@@ -49,8 +63,8 @@ var procrastinever = {
   },
 
   start: function(){
-    //var interval = self.setInterval("procrastinever.clock()",8000);
-    //procrastinever.readDatabase();
+    var interval = self.setInterval("procrastinever.clock()",8000);
+    procrastinever.readDatabase();
 
     //create new instance of the 
     new httpObserver();
