@@ -33,8 +33,18 @@ statement.executeAsync({
 });
 
 var saveOption = function(checkBox) {
+  
   var blocked = checkBox.checked;
   var appName = checkBox.label;
-  alert(appName+"="+blocked);
-  // TODO: save to database
+
+  mDBConn.executeSimpleSQL("UPDATE "+user+" SET blocked = \'"+blocked+"\' WHERE web_app_name= \'"+appName+"\'");
+
+//  alert("UPDATE "+user+" SET blocked = \'"+blocked+"\' WHERE web_app_name= \'"+appName+"\'");
+
+ //maybe ir should be done, but it was not working, so...
+ // var w_statement = mDBConn.createStatement("UPDATE "+user+" SET blocked = :checked WHERE web_app_name= :name");
+ // w_statement.params.checked = "\'"+blocked+"\'";
+ // w_statement.params.name= "\'"+appName+"\'"; 
+//  w_statement.execute();
+  
 }
