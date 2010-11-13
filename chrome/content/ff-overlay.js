@@ -11,7 +11,7 @@ var procrastinever = {
   };*/
 
   createTable: function(username) {	
-    alert("CREATE TABLE IF NOT EXISTS"+username+"(web_app_name VARCHAR(50), blocked BOOLEAN ,PRIMARY KEY( web_app_name))");			
+    alert("CREATE TABLE IF NOT EXISTS"+username+"( web_app_name VARCHAR(50), blocked BOOLEAN, PRIMARY KEY(web_app_name) )");			
     var file = Components.classes["@mozilla.org/file/directory_service;1"]  
                          .getService(Components.interfaces.nsIProperties)  
                          .get("ProfD", Components.interfaces.nsIFile);  
@@ -19,7 +19,7 @@ var procrastinever = {
     var storageService = Components.classes["@mozilla.org/storage/service;1"]  
                                    .getService(Components.interfaces.mozIStorageService);  
     var mDBConn = storageService.openDatabase(file);
-    mDBConn.executeSimpleSQL("CREATE TABLE IF NOT EXISTS "+username+" (web_app_name VARCHAR(50), blocked BOOLEAN ,PRIMARY KEY( web_app_name))");
+    mDBConn.executeSimpleSQL("CREATE TABLE IF NOT EXISTS "+username+" ( web_app_name VARCHAR(50), blocked BOOLEAN, PRIMARY KEY(web_app_name) )");
   },
 
   getUsername: function() {
