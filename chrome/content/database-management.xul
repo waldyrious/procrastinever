@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://procrastinever/skin/database.css" type="text/css"?>
 <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<script src="generate-database-interface.js"/>
 <window id="database-management" title="Procrastinever database management"
 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-<groupbox flex="1">
-  <caption label="Procrastinever database management" />
-  <vbox flex="1">
-    <checkbox label="Facebook" />
-    <checkbox label="Youtube" oncommand="" />
-    <checkbox label="Google" oncommand="" />
-    <checkbox label="Wikipedia" oncommand="" />
-    <checkbox label="Gmail" oncommand="" />
-    <checkbox label="StackOverflow" oncommand="" />
-  </vbox>
-</groupbox>
+  <groupbox flex="1">
+    <caption label="Procrastinever database management" />
+    <vbox flex="1">
+      <checkbox label="Facebook" />
+      <checkbox label="Youtube" oncommand="" />
+      <checkbox label="Google" oncommand="" />
+      <checkbox label="Wikipedia" oncommand="" />
+      <checkbox label="Gmail" oncommand="" />
+      <checkbox label="StackOverflow" oncommand="" />
+    </vbox>
+  </groupbox>
 
 <!--
   <groupbox>
